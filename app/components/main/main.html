@@ -1,0 +1,41 @@
+<div class="container">
+    <table class="table table-hover table-striped table-bordered">
+        <h1>Messages</h1>
+        <hr/>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Message ID</th>
+                <th>Timestamp</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="msg in main.list">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{msg.id}}</td>
+                <!-- <td><span am-time-ago="msg.timestamp | amParse:'YYYY.MM.DD HH:mm:ss'"></span></td> -->
+                <td>
+                    <p>Date: {{msg.timestamp | amDateFormat:'dddd, MMMM Do YYYY'}}</p>
+                    <p>Time: {{msg.timestamp | amDateFormat:'h:mm:ss a'}}</p>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-block" ng-init="isCollapsed = !isCollapsed" ng-click="isCollapsed = !isCollapsed">View Message Tags</button>
+                    <ul class="list-unstyled list-group">
+                        <!-- <li><button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button></li> -->
+                        <li ng-repeat="arr in msg.tags" uib-collapse="isCollapsed">
+                            <p ng-repeat="(key, value) in arr">{{key}} : {{value[0]}}
+                            </p>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre>{{main.list}}</pre>
+<!-- <div>welcome</div>
+<button type="button" class="btn btn-info">Info</button>
+<p><pre>{{main.title}}</pre></p>
+<p><pre>{{main.data}}</pre></p>
+<uib-alert>A happy alert!</uib-alert> -->
