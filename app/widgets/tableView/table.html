@@ -1,0 +1,50 @@
+
+<table class="table table-hover table-striped table-bordered">
+        
+        <hr/>
+        <thead>
+            <tr class="form-inline">
+                <th class="text-center">#</th>
+                <th>
+                    <label for="msgId">Message ID</label>
+                    <input type="text" class="form-control" id="msgId" placeholder="Id" ng-model="search.id">
+                </th>
+                <th>
+                    <label for="timestamp">Timestamp</label>
+                    <select id="timestamp" class="form-control" ng-model="sortorder">
+                        <option selected value="">None</option>
+                        <option selected value="timestamp">Oldest</option>
+                        <option selected value="-timestamp">Newest</option>
+                    </select>
+                </th>
+                <th>
+                    <label for="tags">Message Tag</label>
+                    <input type="text" class="form-control" id="tags" placeholder="Search all" ng-model="searchall">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="msg in vm.list | filter:search:strict | orderBy:sortorder">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{msg.id}}</td>
+                <!-- <td><span am-time-ago="msg.timestamp | amParse:'YYYY.MM.DD HH:mm:ss'"></span></td> -->
+                <td>
+                    <p>{{msg.timestamp | amDateFormat:'dddd, MMM DD YYYY'}}</p>
+                    <p>{{msg.timestamp | amDateFormat:'h:mm:ss A'}}</p>
+                </td>
+                <td>
+                
+                    <button type="button" class="btn btn-primary btn-block" ng-init="isCollapsed = !isCollapsed" ng-click="isCollapsed = !isCollapsed">View Message Tags <span class="caret"></span></button>
+                   
+                    <ul class="list-unstyled list-group" uib-collapse="isCollapsed">
+                        <li><input type="text" class="form-control"  placeholder="Search in message" ng-model="flag"></li>
+                        <hr/>
+                        <li ng-repeat="arr in msg.tags | filtertag:searchall | filtertag:flag " >
+                            <p ng-repeat="(key, value) in arr ">{{key }} : {{value[0] }}
+                            </p>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>

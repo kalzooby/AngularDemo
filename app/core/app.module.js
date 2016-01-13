@@ -3,6 +3,6 @@
 
     angular
         .module('app', [
-            'ngAnimate', 'ngSanitize', 'ui.router', 'restangular', 'angularMoment', 'ui.bootstrap', 'app.datasource', 'app.main', 'app.widgets'
+            'ngAnimate', 'ngSanitize', 'ui.router', 'restangular', 'angularMoment', 'ui.bootstrap', 'app.datasource', 'app.main', 'app.widgets','app.filters'
         ]);
 })();
