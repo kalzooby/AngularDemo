@@ -1,7 +1,7 @@
 # AngularDemo
 
 ## Purpose 
-This application is not for commercial or educational purpose. this demo is for displaying programming skills using AngularJS. Nevertheless, show basic examples of using common Angular API's such as Restangular, UI-route, promise , many others. 
+This application is not for commercial or educational purpose. this demo is for displaying programming skills using AngularJS. Nevertheless, show basic examples of using common Angular API's such as Restangular, UI-route, promise, many others. 
 
 ## Installation 
 * First, you need to check that our environment is setup. Make sure you have the NodeJS, bower and gulp installed.
